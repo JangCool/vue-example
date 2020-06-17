@@ -1,8 +1,10 @@
 <template>
-    <div class="border">
-        <p>
-            컨텐츠 입니다.
-        </p>
+    <div class="content border">
+        <slot>
+            <p>
+                컨텐츠 입니다.
+            </p>
+        </slot>
     </div>
 </template>
 
