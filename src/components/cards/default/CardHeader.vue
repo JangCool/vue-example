@@ -1,6 +1,7 @@
 <template>
     <div class="card-header">
-      <p>{{title}}, {{isButton}}</p>
+      <span>{{title}}, {{isButton}}</span>
+      <slot></slot>
     </div>
 </template>
 
@@ -22,6 +23,10 @@ export default {
   box-sizing: inherit;
   content: "";
   display: table;
+  overflow: auto;
   clear: both;
+}
+span{
+  padding: 5px;
 }
 </style>
