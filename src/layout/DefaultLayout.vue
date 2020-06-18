@@ -65,7 +65,7 @@
                 <span>중간 영역</span>
                 <div class="last-wrap" @click="event.clickLastWrap">
                   <span style="border 1px red" @mousedown.right.prevent="event.mouserRight">안쪽 영역 이곳을 마우스로 클릭 하세요!!</span>
-                  <input type="text" v-model="data.name"/>.enter
+                  <input type="text" @keydown.enter.exact="event.keyEnter"  @keydown.ctrl="event.keyCtrl" v-model="data.name"/>.enter
                 </div>
               </div>
             </div>
