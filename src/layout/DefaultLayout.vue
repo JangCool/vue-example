@@ -8,11 +8,11 @@
               - 안쪽 영역에서 이벤트가 발생 하면 부모 엘리먼트의 이벤트까지 전파 된다.
           -->
           <!--
-            <div class="wrap" @click="event.clickWrap">
+            <div class="wrap" @click="events.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click="event.clickMiddleWrap">
+              <div class="middle-wrap" @click="events.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="event.clickLastWrap">
+                <div class="last-wrap" @click="events.clickLastWrap">
                   <span>안쪽 영역</span>
                 </div>
               </div>
@@ -26,11 +26,11 @@
 
           -->
           <!--
-            <div class="wrap" @click="event.clickWrap">
+            <div class="wrap" @click="events.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click.capture="event.clickMiddleWrap">
+              <div class="middle-wrap" @click.capture="events.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="event.clickLastWrap">
+                <div class="last-wrap" @click="events.clickLastWrap">
                   <span>안쪽 영역</span>
                 </div>
               </div>
@@ -41,13 +41,13 @@
               - last-wrap에서 contextmenu 기본 이벤트를 동작하지 않도록 한다.
           -->
           <!--
-            <div class="wrap" @click="event.clickWrap">
+            <div class="wrap" @click="events.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click.capture="event.clickMiddleWrap">
+              <div class="middle-wrap" @click.capture="events.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @contextmenu.prevent="event.clickLastWrap">
+                <div class="last-wrap" @contextmenu.prevent="events.clickLastWrap">
                   <span>안쪽 영역</span>
-                  <button @click.once="event.clickOnce">.once확인</button>
+                  <button @click.once="events.clickOnce">.once확인</button>
                 </div>
               </div>
             </div>
@@ -59,17 +59,18 @@
                        .exact 수식어는 다른 시스템 수식어와 조합해 그 핸들러가 실행되기 위해 정확한 조합이 눌러야하는 것을 보여준다.
           -->
 
-            <div class="wrap" @click="event.clickWrap">
+            <div class="wrap" @click="events.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click="event.clickMiddleWrap">
+              <div class="middle-wrap" @click="events.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="event.clickLastWrap">
-                  <span style="border 1px red" @mousedown.right.prevent="event.mouserRight">안쪽 영역 이곳을 마우스로 클릭 하세요!!</span>
-                  <input type="text" @keydown.enter.exact="event.keyEnter"  @keydown.ctrl="event.keyCtrl" v-model="data.name"/>.enter
+                <div class="last-wrap" @click="events.clickLastWrap">
+                  <span style="border 1px red" @mousedown.right.prevent="events.mouserRight">안쪽 영역 이곳을 마우스로 클릭 하세요!!</span>
+                  <input type="text" @keydown.enter.exact="events.keyEnter"  @keydown.ctrl="events.keyCtrl" v-model="data.name"/>.enter
                 </div>
               </div>
             </div>
-          <slot></slot>
+            <br>
+            <form-example />
         </defalut-content>
         <default-footer />
     </div>
@@ -84,13 +85,16 @@ import DefaultSideBar from '@/layout/default/DefaultSideBar.vue'
 import DefaultContent from '@/layout/default/DefaultContent.vue'
 import DefaultFooter from '@/layout/default/DefaultFooter.vue'
 
+import FormExample from '@/components/form/FormExample.vue'
+
 export default {
   name: 'default-layout',
   components: {
     'default-header': DefaultHeader,
     'default-sidebar': DefaultSideBar,
     'defalut-content': DefaultContent,
-    'default-footer': DefaultFooter
+    'default-footer': DefaultFooter,
+    'form-example': FormExample
   },
   setup (props) {
     const data = reactive({
@@ -120,7 +124,7 @@ export default {
     }
     return {
       data,
-      event: {
+      events: {
         clickWrap,
         clickMiddleWrap,
         clickLastWrap,
