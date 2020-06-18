@@ -1,8 +1,8 @@
 <template>
     <card>
     <!-- 단일 slot 예제-->
-        <card-header v-bind="state">
-            <button-group />
+        <card-header v-bind="state" @click="callChildFunction($refs)">
+            <button-group v-on:update-parent="showAlert" ref="childComponent"/>
         </card-header>
         <card-body />
     <!-- 단일 slot 예제-->
@@ -35,9 +35,22 @@ export default {
     'card-body': CardBody,
     'button-group': ButtonGroup
   },
-  setup () {
+  setup (props, context) {
+    const showAlert = (p) => {
+      // alert('Card 제목 업데이트가 이루어졌습니다.')
+      alert(p.message)
+    }
+
+    const callChildFunction = ($refs) => {
+      console.log('context.refs => ', context.refs)
+      console.log('context => ', context)
+      $refs.childComponent.callParentFunction()
+    }
+
     return {
-      state: { title: '차트 제목', isButton: false }
+      state: { title: '차트 제목', isButton: false },
+      showAlert,
+      callChildFunction
     }
   }
 }
