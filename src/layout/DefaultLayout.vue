@@ -8,11 +8,11 @@
               - 안쪽 영역에서 이벤트가 발생 하면 부모 엘리먼트의 이벤트까지 전파 된다.
           -->
           <!--
-            <div class="wrap" @click="clickWrap">
+            <div class="wrap" @click="event.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click="clickMiddleWrap">
+              <div class="middle-wrap" @click="event.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="clickLastWrap">
+                <div class="last-wrap" @click="event.clickLastWrap">
                   <span>안쪽 영역</span>
                 </div>
               </div>
@@ -26,11 +26,11 @@
 
           -->
           <!--
-            <div class="wrap" @click="clickWrap">
+            <div class="wrap" @click="event.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click.capture="clickMiddleWrap">
+              <div class="middle-wrap" @click.capture="event.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="clickLastWrap">
+                <div class="last-wrap" @click="event.clickLastWrap">
                   <span>안쪽 영역</span>
                 </div>
               </div>
@@ -41,13 +41,13 @@
               - last-wrap에서 contextmenu 기본 이벤트를 동작하지 않도록 한다.
           -->
           <!--
-            <div class="wrap" @click="clickWrap">
+            <div class="wrap" @click="event.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click.capture="clickMiddleWrap">
+              <div class="middle-wrap" @click.capture="event.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @contextmenu.prevent="clickLastWrap">
+                <div class="last-wrap" @contextmenu.prevent="event.clickLastWrap">
                   <span>안쪽 영역</span>
-                  <button @click.once="clickOnce">.once확인</button>
+                  <button @click.once="event.clickOnce">.once확인</button>
                 </div>
               </div>
             </div>
@@ -59,13 +59,13 @@
                        .exact 수식어는 다른 시스템 수식어와 조합해 그 핸들러가 실행되기 위해 정확한 조합이 눌러야하는 것을 보여준다.
           -->
 
-            <div class="wrap" @click="clickWrap">
+            <div class="wrap" @click="event.clickWrap">
               <span>바깥쪽 영역</span>
-              <div class="middle-wrap" @click="clickMiddleWrap">
+              <div class="middle-wrap" @click="event.clickMiddleWrap">
                 <span>중간 영역</span>
-                <div class="last-wrap" @click="clickLastWrap">
-                  <span style="border 1px red" @mousedown.right.prevent="mouserRight">안쪽 영역 이곳을 마우스로 클릭 하세요!!</span>
-                  <input type="text" @keydown.enter.exact="keyEnter"  @keydown.ctrl="keyCtrl" />.enter
+                <div class="last-wrap" @click="event.clickLastWrap">
+                  <span style="border 1px red" @mousedown.right.prevent="event.mouserRight">안쪽 영역 이곳을 마우스로 클릭 하세요!!</span>
+                  <input type="text" @keydown.enter.exact="event.keyEnter"  @keydown.ctrl="event.keyCtrl" v-model="data.name"/>.enter
                 </div>
               </div>
             </div>
@@ -76,6 +76,8 @@
 </template>
 
 <script>
+
+import { reactive } from 'vue'
 
 import DefaultHeader from '@/layout/default/DefaultHeader.vue'
 import DefaultSideBar from '@/layout/default/DefaultSideBar.vue'
@@ -91,6 +93,10 @@ export default {
     'default-footer': DefaultFooter
   },
   setup (props) {
+    const data = reactive({
+      name: ''
+    })
+
     const clickWrap = () => {
       console.log('clickWrap')
     }
@@ -104,7 +110,7 @@ export default {
       console.log('clickOnce ==> once')
     }
     const keyEnter = () => {
-      console.log('keyEnter ==> Enter')
+      console.log('keyEnter ==> Enter', data)
     }
     const keyCtrl = () => {
       console.log('keyCtrl ==> Ctrl')
@@ -113,13 +119,17 @@ export default {
       alert('마우스 오른쪽 버튼 클릭 이벤트 발생!!')
     }
     return {
-      clickWrap,
-      clickMiddleWrap,
-      clickLastWrap,
-      clickOnce,
-      keyEnter,
-      keyCtrl,
-      mouserRight
+      data,
+      event: {
+        clickWrap,
+        clickMiddleWrap,
+        clickLastWrap,
+        clickOnce,
+        keyEnter,
+        keyCtrl,
+        mouserRight
+      }
+
     }
   }
 }
