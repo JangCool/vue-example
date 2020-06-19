@@ -56,7 +56,7 @@
             이벤트 key :
               - 키이벤트 수식어로 enter, ctrl 버튼 클릭시 실행 한다.
               - .exact 수식어로 정확하게 이벤트 발생상황을 명시해준다.
-                       .exact 수식어는 다른 시스템 수식어와 조합해 그 핸들러가 실행되기 위해 정확한 조합이 눌러야하는 것을 보여준다.
+                .exact 수식어는 다른 시스템 수식어와 조합해 그 핸들러가 실행되기 위해 정확한 조합이 눌러야하는 것을 보여준다.
           -->
 
             <div class="wrap" @click="events.clickWrap">
@@ -85,7 +85,7 @@ import DefaultSideBar from '@/layout/default/DefaultSideBar.vue'
 import DefaultContent from '@/layout/default/DefaultContent.vue'
 import DefaultFooter from '@/layout/default/DefaultFooter.vue'
 
-import FormExample from '@/components/form/FormExample.vue'
+import FormExample from '@/pages/form/FormExample.vue'
 
 export default {
   name: 'default-layout',
