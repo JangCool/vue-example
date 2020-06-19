@@ -64,7 +64,7 @@
     <div v-else>
     Not A/B/C
     </div>
-
+    <input v-focus>
   </div>
 </template>
 
