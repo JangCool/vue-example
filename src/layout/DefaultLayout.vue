@@ -70,7 +70,12 @@
               </div>
             </div>
             <br>
+            ------------------------------------------------------------------------------------------------
             <form-example />
+            <br>
+            ------------------------------------------------------------------------------------------------
+            <br>
+            <directive-example />
         </defalut-content>
         <default-footer />
     </div>
@@ -86,6 +91,7 @@ import DefaultContent from '@/layout/default/DefaultContent.vue'
 import DefaultFooter from '@/layout/default/DefaultFooter.vue'
 
 import FormExample from '@/pages/form/FormExample.vue'
+import DirectiveExample from '@/pages/directive/DirectiveExample.vue'
 
 export default {
   name: 'default-layout',
@@ -94,7 +100,8 @@ export default {
     'default-sidebar': DefaultSideBar,
     'defalut-content': DefaultContent,
     'default-footer': DefaultFooter,
-    'form-example': FormExample
+    'form-example': FormExample,
+    'directive-example': DirectiveExample
   },
   setup (props) {
     const data = reactive({
