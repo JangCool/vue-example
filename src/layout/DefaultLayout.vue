@@ -88,6 +88,8 @@
             <br>
             ------------------------------------------------------------------------------------------------
             <br>
+            <axios-example />
+            <br>
         </defalut-content>
         <default-footer />
     </div>
@@ -105,6 +107,7 @@ import DefaultFooter from '@/layout/default/DefaultFooter.vue'
 import FormExample from '@/pages/form/FormExample.vue'
 import DirectiveExample from '@/pages/directive/DirectiveExample.vue'
 import LifeCycleExample from '@/pages/lifecycle/LifeCycleExample.vue'
+import AxiosExample from '@/pages/axios/AxiosExample.vue'
 
 export default {
   name: 'default-layout',
@@ -115,7 +118,8 @@ export default {
     'default-footer': DefaultFooter,
     'form-example': FormExample,
     'directive-example': DirectiveExample,
-    'lifecycle-example': LifeCycleExample
+    'lifecycle-example': LifeCycleExample,
+    'axios-example': AxiosExample
   },
   setup (props) {
     const data = reactive({
