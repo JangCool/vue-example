@@ -76,6 +76,16 @@
             ------------------------------------------------------------------------------------------------
             <br>
             <directive-example />
+            <br>
+            ------------------------------------------------------------------------------------------------
+            <component :is="data.isRender">
+              <lifecycle-example />
+            </component>
+            <input type='text' v-model="data.isRender">
+            <button @click="events.removeDom">dom 강제 제거</button>
+            <br>
+            ------------------------------------------------------------------------------------------------
+            <br>
         </defalut-content>
         <default-footer />
     </div>
@@ -92,6 +102,7 @@ import DefaultFooter from '@/layout/default/DefaultFooter.vue'
 
 import FormExample from '@/pages/form/FormExample.vue'
 import DirectiveExample from '@/pages/directive/DirectiveExample.vue'
+import LifeCycleExample from '@/pages/lifecycle/LifeCycleExample.vue'
 
 export default {
   name: 'default-layout',
@@ -101,11 +112,13 @@ export default {
     'defalut-content': DefaultContent,
     'default-footer': DefaultFooter,
     'form-example': FormExample,
-    'directive-example': DirectiveExample
+    'directive-example': DirectiveExample,
+    'lifecycle-example': LifeCycleExample
   },
   setup (props) {
     const data = reactive({
-      name: ''
+      name: '',
+      isRender: false
     })
 
     const clickWrap = () => {
@@ -129,6 +142,10 @@ export default {
     const mouserRight = () => {
       alert('마우스 오른쪽 버튼 클릭 이벤트 발생!!')
     }
+    const removeDom = (event) => {
+      var el = document.querySelector('.life-cycle')
+      el.remove()
+    }
     return {
       data,
       events: {
@@ -138,7 +155,8 @@ export default {
         clickOnce,
         keyEnter,
         keyCtrl,
-        mouserRight
+        mouserRight,
+        removeDom
       }
 
     }
