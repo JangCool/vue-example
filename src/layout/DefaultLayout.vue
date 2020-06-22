@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 <template>
     <div class="container">
         <default-header />
@@ -121,7 +122,8 @@ export default {
       name: '',
       isRender: false
     })
-
+    // eslint-disable-next-line no-undef
+    console.log(Utils.text)
     const clickWrap = () => {
       console.log('clickWrap')
     }
