@@ -3,6 +3,7 @@
         <default-header />
         <default-sidebar />
         <defalut-content>
+        <slot></slot>
           <!--
             이벤트 버블링 :
               - 안쪽 영역에서 이벤트가 발생 하면 부모 엘리먼트의 이벤트까지 전파 된다.

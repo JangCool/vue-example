@@ -2,6 +2,7 @@
     <card>
     <!-- 단일 slot 예제-->
         <card-header v-bind="state" @click="callChildFunction($refs)">
+          <!--  <button-group v-on:update-parent="showAlert" :ref="childComponent"/> -->
             <button-group v-on:update-parent="showAlert" ref="childComponent"/>
         </card-header>
         <card-body />
@@ -21,13 +22,17 @@
 </template>
 
 <script>
-
+import {
+  defineComponent
+// , ref
+}
+  from 'vue'
 import Card from '@/components/cards/default/Card.vue'
 import CardHeader from '@/components/cards/default/CardHeader.vue'
 import CardBody from '@/components/cards/default/CardBody.vue'
 import ButtonGroup from '@/components/buttons/ButtonGroup.vue'
 
-export default {
+export default defineComponent({
   name: 'chart-card',
   components: {
     card: Card,
@@ -41,6 +46,12 @@ export default {
       alert(p.message)
     }
 
+    // const childComponent = ref()
+
+    // const callChildFunction = () => {
+    //   console.log('buttonGroup => ', childComponent)
+    //   childComponent.value.callParentFunction()
+    // }
     const callChildFunction = ($refs) => {
       console.log('context.refs => ', context.refs)
       console.log('context => ', context)
@@ -49,11 +60,12 @@ export default {
 
     return {
       state: { title: '차트 제목', isButton: false },
+      // childComponent,
       showAlert,
       callChildFunction
     }
   }
-}
+})
 </script>
 
 <style>
