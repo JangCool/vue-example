@@ -50,6 +50,7 @@ import { reactive } from 'vue'
 
 export default {
   name: 'form-example',
+  props: ['name', 'selected'],
   setup (props) {
     const data = reactive({
       name: '',
