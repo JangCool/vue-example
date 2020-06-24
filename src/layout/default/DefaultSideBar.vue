@@ -12,6 +12,7 @@
         <router-link to="/example/lifecycle">LifeCycle Example</router-link><br>
         <router-link to="/example/event">Event Example</router-link><br>
         <router-link to="/example/axios">Axios Example</router-link><br>
+        <router-link to="/example/vuex">Vuex Example</router-link><br>
 
     </div>
 </template>

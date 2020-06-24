@@ -10,6 +10,7 @@ import AxiosExample from '@/pages/axios/AxiosExample.vue'
 import Profile from '@/pages/user/Profile.vue'
 import Posts from '@/pages/user/Posts.vue'
 import OtherHeader from '@/layout/default/DefaultHeader.vue'
+import VuexExample from '@/pages/vuex/VuexExample.vue'
 
 const routes = [
   {
@@ -69,6 +70,11 @@ const routes = [
     path: '/example/axios',
     name: 'Axios Example',
     component: AxiosExample
+  },
+  {
+    path: '/example/vuex',
+    name: 'Vuex Example',
+    component: VuexExample
   }
 ]
 
